@@ -60,6 +60,7 @@
             lblLogout.Padding = new Padding(18, 10, 18, 10);
             lblLogout.Size = new Size(36, 38);
             lblLogout.TabIndex = 1;
+            lblLogout.Click += lblLogout_Click;
             // 
             // lblClient
             // 
@@ -74,6 +75,7 @@
             lblClient.Size = new Size(201, 43);
             lblClient.TabIndex = 2;
             lblClient.Text = "Client Management";
+            lblClient.Click += lblClient_Click;
             // 
             // lblSettings
             // 
@@ -88,6 +90,7 @@
             lblSettings.Size = new Size(202, 43);
             lblSettings.TabIndex = 3;
             lblSettings.Text = "Settings";
+            lblSettings.Click += lblSettings_Click;
             // 
             // lblUser
             // 
@@ -102,6 +105,7 @@
             lblUser.Size = new Size(201, 43);
             lblUser.TabIndex = 4;
             lblUser.Text = "User Management";
+            lblUser.Click += lblUser_Click;
             // 
             // lblPayment
             // 
@@ -116,6 +120,7 @@
             lblPayment.Size = new Size(202, 43);
             lblPayment.TabIndex = 5;
             lblPayment.Text = "Payment Management";
+            lblPayment.Click += lblPayment_Click;
             // 
             // lblProperty
             // 
@@ -130,6 +135,7 @@
             lblProperty.Size = new Size(219, 43);
             lblProperty.TabIndex = 6;
             lblProperty.Text = "Property Management";
+            lblProperty.Click += lblProperty_Click;
             // 
             // lblLocation
             // 
@@ -144,6 +150,7 @@
             lblLocation.Size = new Size(202, 43);
             lblLocation.TabIndex = 7;
             lblLocation.Text = "Location Management";
+            lblLocation.Click += lblLocation_Click;
             // 
             // lblStaff
             // 
@@ -158,6 +165,7 @@
             lblStaff.Size = new Size(202, 43);
             lblStaff.TabIndex = 8;
             lblStaff.Text = "Staff Management";
+            lblStaff.Click += lblStaff_Click;
             // 
             // lblProduction
             // 
@@ -172,6 +180,7 @@
             lblProduction.Size = new Size(220, 43);
             lblProduction.TabIndex = 9;
             lblProduction.Text = "Production Management";
+            lblProduction.Click += lblProduction_Click;
             // 
             // HomePage
             // 
