@@ -485,5 +485,24 @@ namespace QuietAtticFilms
             clearPayment();
             getPaymentDataForProduction();
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            homePage?.Show();
+        }
+
+        private void txtPaymentAmount_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal amount = decimal.Parse(txtPaymentAmount.Text);
+                txtPaymentAmount.ForeColor = Color.Green;
+            }
+            catch
+            {
+                txtPaymentAmount.ForeColor = Color.Red;
+            }
+        }
     }
 }

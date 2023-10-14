@@ -32,15 +32,59 @@ namespace QuietAtticFilms
         private void clear()
         {
             txtName.Text = string.Empty;
-            combLoId.SelectedIndex = 0;
+            if (checkSearch.Checked)
+            {
+                combLocationId.SelectedIndex = 0;
+            }
+            else
+            {
+                combLocationId.Items.Clear();
+            }
         }
 
         private void Location_Load(object sender, EventArgs e)
         {
             loadLocationDataGrid();
-            combLoId.Items.Clear();
-            loadLocationIdCombo();
-            combLoId.Focus();
+            getNextLocationid();
+        }
+
+        private void getNextLocationid()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string selectQuery = "SELECT TOP 1 ID FROM Location ORDER BY id DESC";
+                    using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int lastID = reader.GetInt32(0);
+                                if (lastID < 10)
+                                {
+                                    txtLocationId.Text = "L-0" + (lastID += 1);
+                                }
+                                else
+                                {
+                                    txtLocationId.Text = "L-" + (lastID += 1);
+                                }
+                            }
+                            else
+                            {
+                                txtLocationId.Text = "L-01";
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
         }
 
         private void loadLocationDataGrid()
@@ -87,13 +131,13 @@ namespace QuietAtticFilms
                         }
                     }
 
-                    combLoId.Items.Clear();
-                    combLoId.Items.Add("--SELECT--");
+                    combLocationId.Items.Clear();
+                    combLocationId.Items.Add("--SELECT--");
                     foreach (DataRow Dr in dt.Rows)
                     {
-                        combLoId.Items.Add(Dr["lId"]);
+                        combLocationId.Items.Add(Dr["lId"]);
                     }
-                    combLoId.SelectedIndex = 0;
+                    combLocationId.SelectedIndex = 0;
 
                 }
                 catch (Exception ex)
@@ -105,7 +149,63 @@ namespace QuietAtticFilms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            updateLocation();
+            if (checkSearch.Checked)
+            {
+                updateLocation();
+            }
+            else
+            {
+                saveLocation();
+            }
+        }
+
+        private void saveLocation()
+        {
+            if (txtName.Text == string.Empty)
+            {
+                MessageBox.Show("Location name is required", "Invalid Values",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Create an SQL command to insert data into a table
+                    string insertQuery = "INSERT INTO Location (lId, name) " +
+                                         "VALUES (@lId, @name)";
+
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    {
+                        // Add parameters to the SQL command
+                        command.Parameters.AddWithValue("@lId", txtLocationId.Text);
+                        command.Parameters.AddWithValue("@name", txtName.Text);
+
+                        // Execute the SQL command
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Location Save is successful.", "Success !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Location Save fail.", "Fail !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+
+                }
+            }
+            clear();
+            loadLocationDataGrid();
+            getNextLocationid();
         }
 
         private void updateLocation()
@@ -157,9 +257,9 @@ namespace QuietAtticFilms
 
         private void combLoId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (combLoId.SelectedIndex > 0)
+            if (combLocationId.SelectedIndex > 0)
             {
-                string? selectedEid = combLoId.SelectedItem.ToString();
+                string? selectedEid = combLocationId.SelectedItem.ToString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     try
@@ -178,7 +278,7 @@ namespace QuietAtticFilms
                                 if (reader.Read())
                                 {
                                     selectedLocationId = reader.GetInt32(0);
-                                    txtName.Text = reader.GetString(2);
+                                    txtName.Text = reader.GetString(3);
                                 }
                                 else
                                 {
@@ -199,7 +299,7 @@ namespace QuietAtticFilms
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult diaRes = MessageBox.Show("Are you sure, You want to Delete Location ID: " +
-                combLoId.Text + " record from the Database? ", "Confirm to DELETE!",
+                combLocationId.Text + " record from the Database? ", "Confirm to DELETE!",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (diaRes == DialogResult.Yes)
             {
@@ -237,6 +337,21 @@ namespace QuietAtticFilms
                 clear();
                 loadLocationDataGrid();
             }
+        }
+
+        private void checkSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            combLocationId.Items.Clear();
+            txtLocationId.Visible = !checkSearch.Checked;
+            combLocationId.Visible = checkSearch.Checked;
+            loadLocationIdCombo();
+            combLocationId.Focus();
+        }
+
+        private void lblBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            homePage?.Show();
         }
     }
 }

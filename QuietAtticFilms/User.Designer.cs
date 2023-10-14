@@ -69,6 +69,7 @@
             lblBack.Size = new Size(44, 40);
             lblBack.TabIndex = 16;
             lblBack.Text = "   ";
+            lblBack.Click += lblBack_Click;
             // 
             // combUsername
             // 

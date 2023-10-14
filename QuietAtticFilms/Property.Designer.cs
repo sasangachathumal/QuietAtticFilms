@@ -69,6 +69,7 @@
             lblBack.Size = new Size(32, 34);
             lblBack.TabIndex = 18;
             lblBack.Text = "  ";
+            lblBack.Click += lblBack_Click;
             // 
             // btnDelete
             // 

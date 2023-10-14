@@ -54,6 +54,7 @@
             // lblLogout
             // 
             lblLogout.AutoSize = true;
+            lblLogout.Cursor = Cursors.Hand;
             lblLogout.Image = Properties.Resources.shutdown__2_;
             lblLogout.Location = new Point(636, 9);
             lblLogout.Name = "lblLogout";
@@ -66,6 +67,7 @@
             // 
             lblClient.AutoSize = true;
             lblClient.BackColor = Color.RoyalBlue;
+            lblClient.Cursor = Cursors.Hand;
             lblClient.FlatStyle = FlatStyle.Flat;
             lblClient.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblClient.ForeColor = Color.White;
@@ -81,6 +83,7 @@
             // 
             lblSettings.AutoSize = true;
             lblSettings.BackColor = Color.RoyalBlue;
+            lblSettings.Cursor = Cursors.Hand;
             lblSettings.FlatStyle = FlatStyle.Flat;
             lblSettings.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblSettings.ForeColor = Color.White;
@@ -96,6 +99,7 @@
             // 
             lblUser.AutoSize = true;
             lblUser.BackColor = Color.RoyalBlue;
+            lblUser.Cursor = Cursors.Hand;
             lblUser.FlatStyle = FlatStyle.Flat;
             lblUser.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblUser.ForeColor = Color.White;
@@ -111,6 +115,7 @@
             // 
             lblPayment.AutoSize = true;
             lblPayment.BackColor = Color.RoyalBlue;
+            lblPayment.Cursor = Cursors.Hand;
             lblPayment.FlatStyle = FlatStyle.Flat;
             lblPayment.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblPayment.ForeColor = Color.White;
@@ -126,6 +131,7 @@
             // 
             lblProperty.AutoSize = true;
             lblProperty.BackColor = Color.RoyalBlue;
+            lblProperty.Cursor = Cursors.Hand;
             lblProperty.FlatStyle = FlatStyle.Flat;
             lblProperty.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblProperty.ForeColor = Color.White;
@@ -141,6 +147,7 @@
             // 
             lblLocation.AutoSize = true;
             lblLocation.BackColor = Color.RoyalBlue;
+            lblLocation.Cursor = Cursors.Hand;
             lblLocation.FlatStyle = FlatStyle.Flat;
             lblLocation.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblLocation.ForeColor = Color.White;
@@ -156,6 +163,7 @@
             // 
             lblStaff.AutoSize = true;
             lblStaff.BackColor = Color.RoyalBlue;
+            lblStaff.Cursor = Cursors.Hand;
             lblStaff.FlatStyle = FlatStyle.Flat;
             lblStaff.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblStaff.ForeColor = Color.White;
@@ -171,6 +179,7 @@
             // 
             lblProduction.AutoSize = true;
             lblProduction.BackColor = Color.RoyalBlue;
+            lblProduction.Cursor = Cursors.Hand;
             lblProduction.FlatStyle = FlatStyle.Flat;
             lblProduction.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblProduction.ForeColor = Color.White;

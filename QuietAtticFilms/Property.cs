@@ -355,5 +355,11 @@ namespace QuietAtticFilms
             clear();
             loadPropertyDataGrid();
         }
+
+        private void lblBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            homePage?.Show();
+        }
     }
 }

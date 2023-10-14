@@ -340,5 +340,11 @@ namespace QuietAtticFilms
                 txtPWconfirm.ForeColor = Color.Red;
             }
         }
+
+        private void lblBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            homePage?.Show();
+        }
     }
 }

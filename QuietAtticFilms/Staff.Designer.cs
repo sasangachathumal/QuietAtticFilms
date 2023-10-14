@@ -71,6 +71,7 @@
             lblBack.Size = new Size(32, 34);
             lblBack.TabIndex = 16;
             lblBack.Text = "  ";
+            lblBack.Click += lblBack_Click;
             // 
             // checkSearch
             // 
@@ -128,6 +129,7 @@
             txtContact.Name = "txtContact";
             txtContact.Size = new Size(171, 26);
             txtContact.TabIndex = 29;
+            txtContact.TextChanged += txtContact_TextChanged;
             // 
             // label4
             // 
@@ -144,6 +146,7 @@
             txtNic.Name = "txtNic";
             txtNic.Size = new Size(171, 26);
             txtNic.TabIndex = 27;
+            txtNic.TextChanged += txtNic_TextChanged;
             // 
             // label3
             // 

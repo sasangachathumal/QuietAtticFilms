@@ -41,7 +41,7 @@
             // 
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.ForeColor = Color.MidnightBlue;
-            btnLogin.Location = new Point(650, 139);
+            btnLogin.Location = new Point(628, 126);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(96, 33);
             btnLogin.TabIndex = 0;
@@ -52,17 +52,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Bauhaus 93", 36F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Righteous", 36F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkSlateBlue;
-            label1.Location = new Point(12, 41);
+            label1.Location = new Point(12, 27);
             label1.Name = "label1";
-            label1.Size = new Size(285, 54);
+            label1.Size = new Size(295, 61);
             label1.TabIndex = 1;
             label1.Text = "WelCome to";
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(544, 54);
+            txtUsername.Location = new Point(522, 41);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(202, 26);
             txtUsername.TabIndex = 2;
@@ -70,11 +70,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Bauhaus 93", 36F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Righteous", 36F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.DarkSlateBlue;
-            label2.Location = new Point(12, 95);
+            label2.Location = new Point(12, 81);
             label2.Name = "label2";
-            label2.Size = new Size(373, 54);
+            label2.Size = new Size(412, 61);
             label2.TabIndex = 3;
             label2.Text = "Quiet Attic Films";
             // 
@@ -82,7 +82,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Book Antiqua", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(443, 57);
+            label3.Location = new Point(421, 44);
             label3.Name = "label3";
             label3.Size = new Size(91, 21);
             label3.TabIndex = 4;
@@ -92,7 +92,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Book Antiqua", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(443, 98);
+            label4.Location = new Point(421, 85);
             label4.Name = "label4";
             label4.Size = new Size(88, 21);
             label4.TabIndex = 6;
@@ -100,7 +100,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(544, 95);
+            txtPassword.Location = new Point(522, 82);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(202, 26);
@@ -111,7 +111,7 @@
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
-            ClientSize = new Size(758, 186);
+            ClientSize = new Size(736, 171);
             Controls.Add(label4);
             Controls.Add(txtPassword);
             Controls.Add(label3);

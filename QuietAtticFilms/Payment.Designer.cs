@@ -75,6 +75,7 @@
             label5.Size = new Size(32, 34);
             label5.TabIndex = 14;
             label5.Text = "  ";
+            label5.Click += label5_Click;
             // 
             // checkSearch
             // 
@@ -155,6 +156,7 @@
             txtPaymentAmount.Name = "txtPaymentAmount";
             txtPaymentAmount.Size = new Size(175, 26);
             txtPaymentAmount.TabIndex = 21;
+            txtPaymentAmount.TextChanged += txtPaymentAmount_TextChanged;
             // 
             // groupBox2
             // 

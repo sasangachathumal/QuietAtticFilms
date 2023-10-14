@@ -360,5 +360,35 @@ namespace QuietAtticFilms
             }
             else { clearForm(); }
         }
+
+        private void lblBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            homePage?.Show();
+        }
+
+        private void txtContact_TextChanged(object sender, EventArgs e)
+        {
+            if (txtContact.TextLength == 10)
+            {
+                txtContact.ForeColor = Color.Green;
+            }
+            else
+            {
+                txtContact.ForeColor = Color.Red;
+            }
+        }
+
+        private void txtNic_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNic.TextLength == 10 || txtNic.TextLength == 18)
+            {
+                txtNic.ForeColor = Color.Green;
+            }
+            else
+            {
+                txtNic.ForeColor = Color.Red;
+            }
+        }
     }
 }

@@ -42,7 +42,7 @@
             txtName = new TextBox();
             btnSave = new Button();
             btnDelete = new Button();
-            label5 = new Label();
+            lblBack = new Label();
             dgClient = new DataGridView();
             label6 = new Label();
             groupBox1.SuspendLayout();
@@ -149,10 +149,11 @@
             // 
             // txtContact
             // 
-            txtContact.Location = new Point(424, 33);
+            txtContact.Location = new Point(428, 33);
             txtContact.Name = "txtContact";
             txtContact.Size = new Size(208, 26);
             txtContact.TabIndex = 7;
+            txtContact.TextChanged += txtContact_TextChanged;
             // 
             // label2
             // 
@@ -196,17 +197,18 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
-            // label5
+            // lblBack
             // 
-            label5.AutoSize = true;
-            label5.Cursor = Cursors.Hand;
-            label5.Image = Properties.Resources.back;
-            label5.Location = new Point(12, 9);
-            label5.Name = "label5";
-            label5.Padding = new Padding(8);
-            label5.Size = new Size(32, 34);
-            label5.TabIndex = 11;
-            label5.Text = "  ";
+            lblBack.AutoSize = true;
+            lblBack.Cursor = Cursors.Hand;
+            lblBack.Image = Properties.Resources.back;
+            lblBack.Location = new Point(12, 9);
+            lblBack.Name = "lblBack";
+            lblBack.Padding = new Padding(8);
+            lblBack.Size = new Size(32, 34);
+            lblBack.TabIndex = 11;
+            lblBack.Text = "  ";
+            lblBack.Click += lblBack_Click;
             // 
             // dgClient
             // 
@@ -244,7 +246,7 @@
             ControlBox = false;
             Controls.Add(label6);
             Controls.Add(dgClient);
-            Controls.Add(label5);
+            Controls.Add(lblBack);
             Controls.Add(btnDelete);
             Controls.Add(btnSave);
             Controls.Add(groupBox1);
@@ -279,7 +281,7 @@
         private TextBox txtAddress;
         private Button btnSave;
         private Button btnDelete;
-        private Label label5;
+        private Label lblBack;
         private DataGridView dgClient;
         private Label label6;
     }
