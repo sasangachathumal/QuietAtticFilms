@@ -35,6 +35,7 @@
             btnClear = new Button();
             dgProp = new DataGridView();
             groupBox1 = new GroupBox();
+            combPropId = new ComboBox();
             combPropType = new ComboBox();
             checkSearch = new CheckBox();
             label3 = new Label();
@@ -42,7 +43,6 @@
             label2 = new Label();
             txtPropId = new TextBox();
             label1 = new Label();
-            combPropId = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgProp).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -81,6 +81,7 @@
             btnDelete.TabIndex = 36;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnSave
             // 
@@ -93,6 +94,7 @@
             btnSave.TabIndex = 35;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnClear
             // 
@@ -109,16 +111,23 @@
             // 
             // dgProp
             // 
+            dgProp.AllowUserToAddRows = false;
+            dgProp.AllowUserToDeleteRows = false;
+            dgProp.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgProp.BackgroundColor = Color.Gainsboro;
             dgProp.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgProp.Location = new Point(12, 272);
             dgProp.Name = "dgProp";
+            dgProp.ReadOnly = true;
             dgProp.RowTemplate.Height = 25;
+            dgProp.ShowEditingIcon = false;
+            dgProp.ShowRowErrors = false;
             dgProp.Size = new Size(717, 238);
             dgProp.TabIndex = 37;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(combPropId);
             groupBox1.Controls.Add(combPropType);
             groupBox1.Controls.Add(checkSearch);
             groupBox1.Controls.Add(label3);
@@ -133,11 +142,22 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Property Info";
             // 
+            // combPropId
+            // 
+            combPropId.DropDownStyle = ComboBoxStyle.DropDownList;
+            combPropId.FormattingEnabled = true;
+            combPropId.Location = new Point(149, 37);
+            combPropId.Name = "combPropId";
+            combPropId.Size = new Size(137, 26);
+            combPropId.TabIndex = 20;
+            combPropId.Visible = false;
+            combPropId.SelectedIndexChanged += combPropId_SelectedIndexChanged;
+            // 
             // combPropType
             // 
             combPropType.DropDownStyle = ComboBoxStyle.DropDownList;
             combPropType.FormattingEnabled = true;
-            combPropType.Items.AddRange(new object[] { "Vehicle", "Furniture", "Building" });
+            combPropType.Items.AddRange(new object[] { "- select -", "Vehicle", "Furniture", "Building" });
             combPropType.Location = new Point(512, 80);
             combPropType.Name = "combPropType";
             combPropType.Size = new Size(190, 26);
@@ -152,6 +172,7 @@
             checkSearch.TabIndex = 19;
             checkSearch.Text = "Search";
             checkSearch.UseVisualStyleBackColor = true;
+            checkSearch.CheckedChanged += checkSearch_CheckedChanged;
             // 
             // label3
             // 
@@ -195,16 +216,6 @@
             label1.TabIndex = 21;
             label1.Text = "Property Id :";
             // 
-            // combPropId
-            // 
-            combPropId.DropDownStyle = ComboBoxStyle.DropDownList;
-            combPropId.FormattingEnabled = true;
-            combPropId.Location = new Point(113, 204);
-            combPropId.Name = "combPropId";
-            combPropId.Size = new Size(137, 26);
-            combPropId.TabIndex = 20;
-            combPropId.Visible = false;
-            // 
             // Property
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
@@ -218,7 +229,6 @@
             Controls.Add(btnSave);
             Controls.Add(btnClear);
             Controls.Add(label6);
-            Controls.Add(combPropId);
             Controls.Add(lblBack);
             Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);

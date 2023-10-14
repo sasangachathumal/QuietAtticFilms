@@ -7,6 +7,8 @@ namespace QuietAtticFilms
 {
     public partial class Client : Form
     {
+        public Form? homePage { get; set; }
+
         private const string connectionString = "Data Source=.;Initial Catalog=Quiet_Attic_Films;Integrated Security=True";
 
         int selectedClientId = -1;
@@ -18,7 +20,7 @@ namespace QuietAtticFilms
         private void Client_Load(object sender, EventArgs e)
         {
             loadClientDataGrid();
-            getNextEid();
+            getNextCid();
         }
 
         private void loadClientDataGrid()
@@ -110,7 +112,7 @@ namespace QuietAtticFilms
                 combClientId.Items.Clear();
             }
         }
-        private void getNextEid()
+        private void getNextCid()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -195,11 +197,11 @@ namespace QuietAtticFilms
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Client Update is successful.");
+                            MessageBox.Show("Client Update is successful.", "Success !", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Client Update fail.");
+                            MessageBox.Show("Client Update fail.", "Fail !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -247,11 +249,11 @@ namespace QuietAtticFilms
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Client Registration is successful.");
+                            MessageBox.Show("Client Registration is successful.", "Success !", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Client Registration fail.");
+                            MessageBox.Show("Client Registration fail.", "Fail !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -263,7 +265,7 @@ namespace QuietAtticFilms
             }
             clear();
             loadClientDataGrid();
-            getNextEid();
+            getNextCid();
         }
 
         private void combClientId_SelectedIndexChanged(object sender, EventArgs e)
@@ -295,7 +297,7 @@ namespace QuietAtticFilms
                                 }
                                 else
                                 {
-                                    MessageBox.Show("No data found in the database.");
+                                    MessageBox.Show("No data found in the database.", "Fail !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                         }
@@ -334,11 +336,11 @@ namespace QuietAtticFilms
 
                             if (rowsAffected > 0)
                             {
-                                MessageBox.Show("Client Delete is successful.");
+                                MessageBox.Show("Client Delete is successful.", "Success !", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
-                                MessageBox.Show("Client Delete fail.");
+                                MessageBox.Show("Client Delete fail.", "Fail !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                     }

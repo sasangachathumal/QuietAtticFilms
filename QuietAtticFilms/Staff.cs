@@ -13,6 +13,8 @@ namespace QuietAtticFilms
 {
     public partial class Staff : Form
     {
+        public Form? homePage { get; set; }
+
         private const string connectionString = "Data Source=.;Initial Catalog=Quiet_Attic_Films;Integrated Security=True";
 
         int selectedStaffId = -1;
@@ -74,8 +76,8 @@ namespace QuietAtticFilms
                 {
                     connection.Open();
 
-                    string selectQuery = "SELECT stId as 'Staff ID', name as 'Name', nic as 'NIC', contact as 'Contact'," +
-                        "email as 'Email', regDate as 'Rgister date' FROM Staff";
+                    string selectQuery = "SELECT stId as 'Staff ID', name as 'Name', nic as 'NIC', contact as 'Contact'" +
+                        " FROM Staff";
                     DataTable dt = new DataTable();
                     using (SqlCommand command = new SqlCommand(selectQuery, connection))
                     {
@@ -103,8 +105,6 @@ namespace QuietAtticFilms
             txtName.Text = string.Empty;
             txtNic.Text = string.Empty;
             txtContact.Text = string.Empty;
-            txtEmail.Text = string.Empty;
-            txtPassword.Text = string.Empty;
             if (checkSearch.Checked)
             {
                 combStaffId.SelectedIndex = 0;
@@ -140,11 +140,11 @@ namespace QuietAtticFilms
 
                             if (rowsAffected > 0)
                             {
-                                MessageBox.Show("Staff member delete is successful.");
+                                MessageBox.Show("Staff member delete is successful.", "Success !", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
-                                MessageBox.Show("Staff member Delete fail.");
+                                MessageBox.Show("Staff member Delete fail.", "Fail !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                     }
@@ -231,8 +231,7 @@ namespace QuietAtticFilms
                     connection.Open();
 
                     // Create an SQL command to update data
-                    string updateQuery = "UPDATE Staff SET name = @name, nic = @nic, contact = @contact, " +
-                        "email = @email, stPassword = @password" +
+                    string updateQuery = "UPDATE Staff SET name = @name, nic = @nic, contact = @contact " +
                         " WHERE id = @id";
 
                     using (SqlCommand command = new SqlCommand(updateQuery, connection))
@@ -241,8 +240,6 @@ namespace QuietAtticFilms
                         command.Parameters.AddWithValue("@name", txtName.Text);
                         command.Parameters.AddWithValue("@nic", txtNic.Text);
                         command.Parameters.AddWithValue("@contact", txtContact.Text);
-                        command.Parameters.AddWithValue("@email", txtEmail.Text);
-                        command.Parameters.AddWithValue("@password", txtPassword.Text);
                         command.Parameters.AddWithValue("@id", selectedStaffId);
 
                         // Execute the SQL command
@@ -250,11 +247,11 @@ namespace QuietAtticFilms
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Staff member Update is successful.");
+                            MessageBox.Show("Staff member Update is successful.", "Success !", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Staff member Update fail.");
+                            MessageBox.Show("Staff member Update fail.", "Fail !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -286,8 +283,8 @@ namespace QuietAtticFilms
                     connection.Open();
 
                     // Create an SQL command to insert data into a table
-                    string insertQuery = "INSERT INTO Staff (stId, name, nic, contact, email, stPassword, regDate) " +
-                                         "VALUES (@stId, @name, @nic, @contact, @email, @password, @regDate)";
+                    string insertQuery = "INSERT INTO Staff (stId, name, nic, contact) " +
+                                         "VALUES (@stId, @name, @nic, @contact)";
 
                     using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
@@ -296,20 +293,17 @@ namespace QuietAtticFilms
                         command.Parameters.AddWithValue("@name", txtName.Text);
                         command.Parameters.AddWithValue("@nic", txtNic.Text);
                         command.Parameters.AddWithValue("@contact", txtContact.Text);
-                        command.Parameters.AddWithValue("@email", txtEmail.Text);
-                        command.Parameters.AddWithValue("@password", txtPassword.Text);
-                        command.Parameters.AddWithValue("@regDate", DateTime.Now.Date);
 
                         // Execute the SQL command
                         int rowsAffected = command.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Staff member Save is successful.");
+                            MessageBox.Show("Staff member Save is successful.", "Success !", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Staff member Save fail.");
+                            MessageBox.Show("Staff member Save fail.", "Fail !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -350,12 +344,10 @@ namespace QuietAtticFilms
                                     txtName.Text = reader.GetString(2);
                                     txtNic.Text = reader.GetString(3);
                                     txtContact.Text = reader.GetString(4);
-                                    txtEmail.Text = reader.GetString(5);
-                                    txtPassword.Text = reader.GetString(6);
                                 }
                                 else
                                 {
-                                    MessageBox.Show("No data found in the database.");
+                                    MessageBox.Show("No data found in the database.", "Fail !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                         }

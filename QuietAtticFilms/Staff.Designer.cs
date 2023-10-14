@@ -41,17 +41,11 @@
             txtName = new TextBox();
             label2 = new Label();
             txtStaffId = new TextBox();
-            groupBox2 = new GroupBox();
-            txtPassword = new TextBox();
-            label5 = new Label();
-            txtEmail = new TextBox();
-            label8 = new Label();
             btnDelete = new Button();
             btnSave = new Button();
             btnClear = new Button();
             dgStaff = new DataGridView();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgStaff).BeginInit();
             SuspendLayout();
             // 
@@ -184,57 +178,12 @@
             txtStaffId.Size = new Size(137, 26);
             txtStaffId.TabIndex = 23;
             // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(txtPassword);
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(txtEmail);
-            groupBox2.Controls.Add(label8);
-            groupBox2.Location = new Point(12, 218);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(692, 88);
-            groupBox2.TabIndex = 30;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Login Info";
-            // 
-            // txtPassword
-            // 
-            txtPassword.Location = new Point(479, 35);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(197, 26);
-            txtPassword.TabIndex = 27;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(393, 38);
-            label5.Name = "label5";
-            label5.Size = new Size(86, 18);
-            label5.TabIndex = 26;
-            label5.Text = "Password :";
-            // 
-            // txtEmail
-            // 
-            txtEmail.Location = new Point(92, 35);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(197, 26);
-            txtEmail.TabIndex = 25;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(6, 38);
-            label8.Name = "label8";
-            label8.Size = new Size(56, 18);
-            label8.TabIndex = 24;
-            label8.Text = "Email :";
-            // 
             // btnDelete
             // 
             btnDelete.Cursor = Cursors.Hand;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.ForeColor = Color.DarkRed;
-            btnDelete.Location = new Point(513, 324);
+            btnDelete.Location = new Point(513, 218);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(86, 36);
             btnDelete.TabIndex = 33;
@@ -247,7 +196,7 @@
             btnSave.Cursor = Cursors.Hand;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.ForeColor = Color.DarkSlateBlue;
-            btnSave.Location = new Point(407, 324);
+            btnSave.Location = new Point(407, 218);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(86, 36);
             btnSave.TabIndex = 32;
@@ -260,7 +209,7 @@
             btnClear.Cursor = Cursors.Hand;
             btnClear.FlatStyle = FlatStyle.Flat;
             btnClear.ForeColor = Color.SteelBlue;
-            btnClear.Location = new Point(618, 324);
+            btnClear.Location = new Point(618, 218);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(86, 36);
             btnClear.TabIndex = 31;
@@ -275,7 +224,7 @@
             dgStaff.BackgroundColor = Color.Gainsboro;
             dgStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgStaff.ImeMode = ImeMode.Off;
-            dgStaff.Location = new Point(12, 378);
+            dgStaff.Location = new Point(12, 274);
             dgStaff.MultiSelect = false;
             dgStaff.Name = "dgStaff";
             dgStaff.ReadOnly = true;
@@ -292,13 +241,12 @@
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
-            ClientSize = new Size(716, 624);
+            ClientSize = new Size(716, 521);
             ControlBox = false;
             Controls.Add(dgStaff);
             Controls.Add(btnDelete);
             Controls.Add(btnSave);
             Controls.Add(btnClear);
-            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label6);
             Controls.Add(lblBack);
@@ -311,8 +259,6 @@
             Load += Staff_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgStaff).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -333,11 +279,6 @@
         private TextBox txtName;
         private Label label2;
         private TextBox txtStaffId;
-        private GroupBox groupBox2;
-        private TextBox txtPassword;
-        private Label label5;
-        private TextBox txtEmail;
-        private Label label8;
         private Button btnDelete;
         private Button btnSave;
         private Button btnClear;

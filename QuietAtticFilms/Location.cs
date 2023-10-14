@@ -14,6 +14,8 @@ namespace QuietAtticFilms
 {
     public partial class Location : Form
     {
+        public Form? homePage { get; set; }
+
         private const string connectionString = "Data Source=.;Initial Catalog=Quiet_Attic_Films;Integrated Security=True";
 
         int selectedLocationId = -1;
