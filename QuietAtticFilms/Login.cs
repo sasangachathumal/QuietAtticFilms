@@ -14,7 +14,7 @@ namespace QuietAtticFilms
 {
     public partial class Login : Form
     {
-        private const string connectionString = "Data Source=SMSC-DESKTOP-PC;Initial Catalog=Grifindo_Toys;Integrated Security=True";
+        private const string connectionString = "Data Source=.;Initial Catalog=Quiet_Attic_Films;Integrated Security=True";
 
         public static String loginUserUsername = "";
         public static String loginUserPassowrd = "";
@@ -39,8 +39,9 @@ namespace QuietAtticFilms
                 try
                 {
                     connection.Open();
+                    
+                    string selectQuery = "SELECT * FROM Users WHERE username=@username COLLATE SQL_Latin1_General_CP1_CS_AS";
 
-                    string selectQuery = "SELECT * FROM systemUsers WHERE username=@username COLLATE SQL_Latin1_General_CP1_CS_AS";
                     using (SqlCommand command = new SqlCommand(selectQuery, connection))
                     {
                         command.Parameters.AddWithValue("@username", txtUsername.Text);

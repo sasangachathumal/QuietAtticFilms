@@ -43,7 +43,7 @@ namespace QuietAtticFilms
                 {
                     connection.Open();
 
-                    string selectQuery = "SELECT username FROM systemUsers";
+                    string selectQuery = "SELECT username FROM Users";
                     DataTable dt = new DataTable();
                     using (SqlCommand command = new SqlCommand(selectQuery, connection))
                     {
@@ -108,7 +108,7 @@ namespace QuietAtticFilms
                         connection.Open();
 
                         // Create an SQL command to insert data into a table
-                        string selectQuery = "DELETE FROM systemUsers WHERE id=@id";
+                        string selectQuery = "DELETE FROM Users WHERE id=@id";
 
                         using (SqlCommand command = new SqlCommand(selectQuery, connection))
                         {
@@ -147,7 +147,7 @@ namespace QuietAtticFilms
                         connection.Open();
 
                         // Create an SQL command to insert data into a table
-                        string selectQuery = "SELECT * FROM systemUsers WHERE username=@username";
+                        string selectQuery = "SELECT * FROM Users WHERE username=@username";
 
                         using (SqlCommand command = new SqlCommand(selectQuery, connection))
                         {
@@ -219,7 +219,7 @@ namespace QuietAtticFilms
                     connection.Open();
 
                     // Create an SQL command to insert data into a table
-                    string insertQuery = "INSERT INTO systemUsers (username, userPassword) " +
+                    string insertQuery = "INSERT INTO Users (username, userPassword) " +
                                          "VALUES (@username, @password)";
 
                     using (SqlCommand command = new SqlCommand(insertQuery, connection))
@@ -277,7 +277,7 @@ namespace QuietAtticFilms
                         connection.Open();
 
                         // Create an SQL command to update data
-                        string updateQuery = "UPDATE systemUsers SET username = @username, " +
+                        string updateQuery = "UPDATE Users SET username = @username, " +
                                              "userPassword = @password " +
                                              "WHERE id = @id";
 

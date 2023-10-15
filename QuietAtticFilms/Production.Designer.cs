@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             label6 = new Label();
             label5 = new Label();
             btnRemoveProperty = new Button();
             combClientId = new ComboBox();
-            checkProSearch = new CheckBox();
             label1 = new Label();
             pickPropStartDate = new DateTimePicker();
             groupBox1 = new GroupBox();
@@ -52,30 +45,28 @@
             label4 = new Label();
             txtProId = new TextBox();
             label3 = new Label();
-            combProId = new ComboBox();
             checkNeedProperty = new CheckBox();
             groupBox3 = new GroupBox();
+            checkLocationSearch = new CheckBox();
             btnRemoveLocation = new Button();
             btnAddLocation = new Button();
-            dgLocation = new DataGridView();
             combLocationId = new ComboBox();
             groupBox4 = new GroupBox();
+            checkPropertySearch = new CheckBox();
             btnAddProperty = new Button();
             label12 = new Label();
-            dgProperty = new DataGridView();
             txtPropertyName = new TextBox();
             label13 = new Label();
             combPropertyId = new ComboBox();
             txtLocationName = new TextBox();
             label9 = new Label();
             label10 = new Label();
-            btnDelete = new Button();
             btnSave = new Button();
             btnClear = new Button();
             groupBox5 = new GroupBox();
-            btnRemoveStaff = new Button();
-            dgStaff = new DataGridView();
+            checkStaffSearch = new CheckBox();
             btnAddStaff = new Button();
+            btnRemoveStaff = new Button();
             label15 = new Label();
             combStaffRole = new ComboBox();
             txtStaffName = new TextBox();
@@ -85,11 +76,8 @@
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgLocation).BeginInit();
             groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgProperty).BeginInit();
             groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgStaff).BeginInit();
             SuspendLayout();
             // 
             // label6
@@ -122,12 +110,13 @@
             btnRemoveProperty.FlatStyle = FlatStyle.Flat;
             btnRemoveProperty.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnRemoveProperty.ForeColor = Color.Firebrick;
-            btnRemoveProperty.Location = new Point(272, 93);
+            btnRemoveProperty.Location = new Point(6, 93);
             btnRemoveProperty.Name = "btnRemoveProperty";
-            btnRemoveProperty.Size = new Size(84, 31);
+            btnRemoveProperty.Size = new Size(176, 31);
             btnRemoveProperty.TabIndex = 16;
-            btnRemoveProperty.Text = "Remove";
+            btnRemoveProperty.Text = "Remove from Property List";
             btnRemoveProperty.UseVisualStyleBackColor = true;
+            btnRemoveProperty.Click += btnRemoveProperty_Click;
             // 
             // combClientId
             // 
@@ -136,19 +125,9 @@
             combClientId.FormattingEnabled = true;
             combClientId.Location = new Point(168, 29);
             combClientId.Name = "combClientId";
-            combClientId.Size = new Size(276, 26);
+            combClientId.Size = new Size(261, 26);
             combClientId.TabIndex = 17;
-            // 
-            // checkProSearch
-            // 
-            checkProSearch.AutoSize = true;
-            checkProSearch.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            checkProSearch.Location = new Point(253, 34);
-            checkProSearch.Name = "checkProSearch";
-            checkProSearch.Size = new Size(77, 22);
-            checkProSearch.TabIndex = 18;
-            checkProSearch.Text = "Search";
-            checkProSearch.UseVisualStyleBackColor = true;
+            combClientId.SelectedIndexChanged += combClientId_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -177,9 +156,9 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(combClientId);
             groupBox1.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(491, 67);
+            groupBox1.Location = new Point(430, 67);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(450, 168);
+            groupBox1.Size = new Size(438, 168);
             groupBox1.TabIndex = 22;
             groupBox1.TabStop = false;
             groupBox1.Text = "Client Info";
@@ -190,7 +169,7 @@
             txtClientAddress.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtClientAddress.Location = new Point(168, 64);
             txtClientAddress.Name = "txtClientAddress";
-            txtClientAddress.Size = new Size(276, 26);
+            txtClientAddress.Size = new Size(261, 26);
             txtClientAddress.TabIndex = 23;
             // 
             // label2
@@ -210,7 +189,6 @@
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(txtNoOfDays);
             groupBox2.Controls.Add(label7);
-            groupBox2.Controls.Add(checkProSearch);
             groupBox2.Controls.Add(pickPropStartDate);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(txtProId);
@@ -218,7 +196,7 @@
             groupBox2.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox2.Location = new Point(12, 67);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(473, 168);
+            groupBox2.Size = new Size(412, 168);
             groupBox2.TabIndex = 23;
             groupBox2.TabStop = false;
             groupBox2.Text = "Production Info";
@@ -288,15 +266,6 @@
             label3.TabIndex = 24;
             label3.Text = "Pro Id :";
             // 
-            // combProId
-            // 
-            combProId.DropDownStyle = ComboBoxStyle.DropDownList;
-            combProId.FormattingEnabled = true;
-            combProId.Location = new Point(83, 24);
-            combProId.Name = "combProId";
-            combProId.Size = new Size(133, 26);
-            combProId.TabIndex = 24;
-            // 
             // checkNeedProperty
             // 
             checkNeedProperty.AutoSize = true;
@@ -312,9 +281,9 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.Transparent;
+            groupBox3.Controls.Add(checkLocationSearch);
             groupBox3.Controls.Add(btnRemoveLocation);
             groupBox3.Controls.Add(btnAddLocation);
-            groupBox3.Controls.Add(dgLocation);
             groupBox3.Controls.Add(combLocationId);
             groupBox3.Controls.Add(groupBox4);
             groupBox3.Controls.Add(txtLocationName);
@@ -324,10 +293,22 @@
             groupBox3.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox3.Location = new Point(12, 241);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(473, 546);
+            groupBox3.Size = new Size(412, 316);
             groupBox3.TabIndex = 31;
             groupBox3.TabStop = false;
             groupBox3.Text = "Location Info";
+            // 
+            // checkLocationSearch
+            // 
+            checkLocationSearch.AutoSize = true;
+            checkLocationSearch.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkLocationSearch.Location = new Point(268, 30);
+            checkLocationSearch.Name = "checkLocationSearch";
+            checkLocationSearch.Size = new Size(122, 22);
+            checkLocationSearch.TabIndex = 30;
+            checkLocationSearch.Text = "Search in List";
+            checkLocationSearch.UseVisualStyleBackColor = true;
+            checkLocationSearch.CheckedChanged += checkLocationSearch_CheckedChanged;
             // 
             // btnRemoveLocation
             // 
@@ -335,11 +316,11 @@
             btnRemoveLocation.FlatStyle = FlatStyle.Flat;
             btnRemoveLocation.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnRemoveLocation.ForeColor = Color.Firebrick;
-            btnRemoveLocation.Location = new Point(272, 385);
+            btnRemoveLocation.Location = new Point(6, 271);
             btnRemoveLocation.Name = "btnRemoveLocation";
-            btnRemoveLocation.Size = new Size(90, 31);
+            btnRemoveLocation.Size = new Size(182, 31);
             btnRemoveLocation.TabIndex = 43;
-            btnRemoveLocation.Text = "Remove";
+            btnRemoveLocation.Text = "Remove from Location List";
             btnRemoveLocation.UseVisualStyleBackColor = true;
             // 
             // btnAddLocation
@@ -348,39 +329,13 @@
             btnAddLocation.FlatStyle = FlatStyle.Flat;
             btnAddLocation.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddLocation.ForeColor = Color.RoyalBlue;
-            btnAddLocation.Location = new Point(377, 385);
+            btnAddLocation.Location = new Point(221, 271);
             btnAddLocation.Name = "btnAddLocation";
-            btnAddLocation.Size = new Size(90, 31);
+            btnAddLocation.Size = new Size(182, 31);
             btnAddLocation.TabIndex = 42;
-            btnAddLocation.Text = "Add";
+            btnAddLocation.Text = "Add to Location List";
             btnAddLocation.UseVisualStyleBackColor = true;
-            // 
-            // dgLocation
-            // 
-            dgLocation.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgLocation.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgLocation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgLocation.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgLocation.DefaultCellStyle = dataGridViewCellStyle2;
-            dgLocation.Location = new Point(6, 422);
-            dgLocation.Name = "dgLocation";
-            dgLocation.RowTemplate.Height = 25;
-            dgLocation.Size = new Size(461, 117);
-            dgLocation.TabIndex = 42;
+            btnAddLocation.Click += btnAddLocation_Click;
             // 
             // combLocationId
             // 
@@ -391,35 +346,47 @@
             combLocationId.Name = "combLocationId";
             combLocationId.Size = new Size(133, 26);
             combLocationId.TabIndex = 32;
+            combLocationId.SelectedIndexChanged += combLocationId_SelectedIndexChanged;
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(checkPropertySearch);
             groupBox4.Controls.Add(btnAddProperty);
             groupBox4.Controls.Add(label12);
-            groupBox4.Controls.Add(dgProperty);
             groupBox4.Controls.Add(txtPropertyName);
             groupBox4.Controls.Add(btnRemoveProperty);
             groupBox4.Controls.Add(label13);
             groupBox4.Controls.Add(combPropertyId);
             groupBox4.Location = new Point(6, 120);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(461, 259);
+            groupBox4.Size = new Size(397, 136);
             groupBox4.TabIndex = 42;
             groupBox4.TabStop = false;
             groupBox4.Text = "Property Info";
+            // 
+            // checkPropertySearch
+            // 
+            checkPropertySearch.AutoSize = true;
+            checkPropertySearch.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkPropertySearch.Location = new Point(270, 31);
+            checkPropertySearch.Name = "checkPropertySearch";
+            checkPropertySearch.Size = new Size(122, 22);
+            checkPropertySearch.TabIndex = 44;
+            checkPropertySearch.Text = "Search in List";
+            checkPropertySearch.UseVisualStyleBackColor = true;
             // 
             // btnAddProperty
             // 
             btnAddProperty.Cursor = Cursors.Hand;
             btnAddProperty.Enabled = false;
-            btnAddProperty.FlatStyle = FlatStyle.Flat;
+            btnAddProperty.FlatStyle = FlatStyle.Popup;
             btnAddProperty.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddProperty.ForeColor = Color.RoyalBlue;
-            btnAddProperty.Location = new Point(371, 93);
+            btnAddProperty.Location = new Point(216, 93);
             btnAddProperty.Name = "btnAddProperty";
-            btnAddProperty.Size = new Size(84, 31);
+            btnAddProperty.Size = new Size(176, 31);
             btnAddProperty.TabIndex = 42;
-            btnAddProperty.Text = "Add";
+            btnAddProperty.Text = "Add to Property List";
             btnAddProperty.UseVisualStyleBackColor = true;
             btnAddProperty.Click += btnAddProperty_Click;
             // 
@@ -432,39 +399,6 @@
             label12.Size = new Size(91, 18);
             label12.TabIndex = 36;
             label12.Text = "Property Id :";
-            // 
-            // dgProperty
-            // 
-            dgProperty.AllowUserToAddRows = false;
-            dgProperty.AllowUserToDeleteRows = false;
-            dgProperty.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgProperty.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgProperty.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dgProperty.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgProperty.DefaultCellStyle = dataGridViewCellStyle4;
-            dgProperty.Enabled = false;
-            dgProperty.Location = new Point(7, 130);
-            dgProperty.MultiSelect = false;
-            dgProperty.Name = "dgProperty";
-            dgProperty.RowTemplate.Height = 25;
-            dgProperty.ShowEditingIcon = false;
-            dgProperty.ShowRowErrors = false;
-            dgProperty.Size = new Size(448, 123);
-            dgProperty.TabIndex = 41;
             // 
             // txtPropertyName
             // 
@@ -525,48 +459,38 @@
             label10.TabIndex = 31;
             label10.Text = "Location Id :";
             // 
-            // btnDelete
-            // 
-            btnDelete.Cursor = Cursors.Hand;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.ForeColor = Color.DarkRed;
-            btnDelete.Location = new Point(491, 686);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(450, 36);
-            btnDelete.TabIndex = 34;
-            btnDelete.Text = "Delete Production";
-            btnDelete.UseVisualStyleBackColor = true;
-            // 
             // btnSave
             // 
             btnSave.Cursor = Cursors.Hand;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.ForeColor = Color.DarkSlateBlue;
-            btnSave.Location = new Point(491, 619);
+            btnSave.Location = new Point(430, 461);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(450, 36);
+            btnSave.Size = new Size(438, 36);
             btnSave.TabIndex = 33;
             btnSave.Text = "Save Production Data";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnClear
             // 
             btnClear.Cursor = Cursors.Hand;
             btnClear.FlatStyle = FlatStyle.Flat;
             btnClear.ForeColor = Color.SteelBlue;
-            btnClear.Location = new Point(491, 751);
+            btnClear.Location = new Point(430, 521);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(450, 36);
+            btnClear.Size = new Size(438, 36);
             btnClear.TabIndex = 32;
             btnClear.Text = "Clear Form";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // groupBox5
             // 
             groupBox5.BackColor = Color.Transparent;
-            groupBox5.Controls.Add(btnRemoveStaff);
-            groupBox5.Controls.Add(dgStaff);
+            groupBox5.Controls.Add(checkStaffSearch);
             groupBox5.Controls.Add(btnAddStaff);
+            groupBox5.Controls.Add(btnRemoveStaff);
             groupBox5.Controls.Add(label15);
             groupBox5.Controls.Add(combStaffRole);
             groupBox5.Controls.Add(txtStaffName);
@@ -574,52 +498,23 @@
             groupBox5.Controls.Add(label11);
             groupBox5.Controls.Add(combStaffId);
             groupBox5.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox5.Location = new Point(491, 241);
+            groupBox5.Location = new Point(430, 241);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(450, 313);
+            groupBox5.Size = new Size(438, 175);
             groupBox5.TabIndex = 35;
             groupBox5.TabStop = false;
             groupBox5.Text = "Staff Info";
             // 
-            // btnRemoveStaff
+            // checkStaffSearch
             // 
-            btnRemoveStaff.Cursor = Cursors.Hand;
-            btnRemoveStaff.FlatStyle = FlatStyle.Flat;
-            btnRemoveStaff.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRemoveStaff.ForeColor = Color.Firebrick;
-            btnRemoveStaff.Location = new Point(261, 124);
-            btnRemoveStaff.Name = "btnRemoveStaff";
-            btnRemoveStaff.Size = new Size(84, 31);
-            btnRemoveStaff.TabIndex = 43;
-            btnRemoveStaff.Text = "Remove";
-            btnRemoveStaff.UseVisualStyleBackColor = true;
-            // 
-            // dgStaff
-            // 
-            dgStaff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgStaff.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgStaff.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dgStaff.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgStaff.DefaultCellStyle = dataGridViewCellStyle6;
-            dgStaff.Location = new Point(6, 161);
-            dgStaff.Name = "dgStaff";
-            dgStaff.RowTemplate.Height = 25;
-            dgStaff.Size = new Size(438, 142);
-            dgStaff.TabIndex = 42;
+            checkStaffSearch.AutoSize = true;
+            checkStaffSearch.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkStaffSearch.Location = new Point(307, 30);
+            checkStaffSearch.Name = "checkStaffSearch";
+            checkStaffSearch.Size = new Size(122, 22);
+            checkStaffSearch.TabIndex = 45;
+            checkStaffSearch.Text = "Search in List";
+            checkStaffSearch.UseVisualStyleBackColor = true;
             // 
             // btnAddStaff
             // 
@@ -627,12 +522,26 @@
             btnAddStaff.FlatStyle = FlatStyle.Flat;
             btnAddStaff.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddStaff.ForeColor = Color.RoyalBlue;
-            btnAddStaff.Location = new Point(360, 124);
+            btnAddStaff.Location = new Point(233, 130);
             btnAddStaff.Name = "btnAddStaff";
-            btnAddStaff.Size = new Size(84, 31);
+            btnAddStaff.Size = new Size(196, 31);
             btnAddStaff.TabIndex = 42;
-            btnAddStaff.Text = "Add";
+            btnAddStaff.Text = "Add to Staff List";
             btnAddStaff.UseVisualStyleBackColor = true;
+            btnAddStaff.Click += btnAddStaff_Click;
+            // 
+            // btnRemoveStaff
+            // 
+            btnRemoveStaff.Cursor = Cursors.Hand;
+            btnRemoveStaff.FlatStyle = FlatStyle.Flat;
+            btnRemoveStaff.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRemoveStaff.ForeColor = Color.Firebrick;
+            btnRemoveStaff.Location = new Point(9, 130);
+            btnRemoveStaff.Name = "btnRemoveStaff";
+            btnRemoveStaff.Size = new Size(196, 31);
+            btnRemoveStaff.TabIndex = 43;
+            btnRemoveStaff.Text = "Remove from Staff List";
+            btnRemoveStaff.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -649,10 +558,10 @@
             combStaffRole.DropDownStyle = ComboBoxStyle.DropDownList;
             combStaffRole.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
             combStaffRole.FormattingEnabled = true;
-            combStaffRole.Items.AddRange(new object[] { "Camera Crew", "Runner", "Actor", "Voice Actor", "Producer" });
+            combStaffRole.Items.AddRange(new object[] { "-select-", "Camera Crew", "Runner", "Actor", "Voice Actor", "Producer" });
             combStaffRole.Location = new Point(168, 92);
             combStaffRole.Name = "combStaffRole";
-            combStaffRole.Size = new Size(276, 26);
+            combStaffRole.Size = new Size(261, 26);
             combStaffRole.TabIndex = 26;
             // 
             // txtStaffName
@@ -661,7 +570,7 @@
             txtStaffName.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtStaffName.Location = new Point(168, 60);
             txtStaffName.Name = "txtStaffName";
-            txtStaffName.Size = new Size(276, 26);
+            txtStaffName.Size = new Size(261, 26);
             txtStaffName.TabIndex = 25;
             // 
             // label14
@@ -691,22 +600,21 @@
             combStaffId.FormattingEnabled = true;
             combStaffId.Location = new Point(168, 28);
             combStaffId.Name = "combStaffId";
-            combStaffId.Size = new Size(276, 26);
+            combStaffId.Size = new Size(133, 26);
             combStaffId.TabIndex = 24;
+            combStaffId.SelectedIndexChanged += combStaffId_SelectedIndexChanged;
             // 
             // Production
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
-            ClientSize = new Size(950, 797);
+            ClientSize = new Size(875, 568);
             ControlBox = false;
             Controls.Add(groupBox5);
-            Controls.Add(btnDelete);
             Controls.Add(btnSave);
             Controls.Add(btnClear);
             Controls.Add(groupBox3);
-            Controls.Add(combProId);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label6);
@@ -724,13 +632,10 @@
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgLocation).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgProperty).EndInit();
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgStaff).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -741,7 +646,6 @@
         private Label label5;
         private Button btnRemoveProperty;
         private ComboBox combClientId;
-        private CheckBox checkProSearch;
         private Label label1;
         private DateTimePicker pickPropStartDate;
         private GroupBox groupBox1;
@@ -754,7 +658,6 @@
         private Label label7;
         private Label label4;
         private TextBox txtProId;
-        private ComboBox combProId;
         private CheckBox checkNeedProperty;
         private GroupBox groupBox3;
         private ComboBox combLocationId;
@@ -765,17 +668,13 @@
         private Label label12;
         private TextBox txtPropertyName;
         private Label label13;
-        private DataGridView dgProperty;
         private Button btnAddLocation;
-        private DataGridView dgLocation;
         private GroupBox groupBox4;
-        private Button btnDelete;
         private Button btnSave;
         private Button btnClear;
         private GroupBox groupBox5;
         private Label label11;
         private ComboBox combStaffId;
-        private DataGridView dgStaff;
         private Button btnAddStaff;
         private Label label15;
         private ComboBox combStaffRole;
@@ -785,5 +684,8 @@
         private Button btnAddProperty;
         private Button btnRemoveLocation;
         private Button btnRemoveStaff;
+        private CheckBox checkLocationSearch;
+        private CheckBox checkPropertySearch;
+        private CheckBox checkStaffSearch;
     }
 }

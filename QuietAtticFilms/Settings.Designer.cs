@@ -70,11 +70,11 @@
             label6.AutoSize = true;
             label6.Font = new Font("Righteous", 24F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.DarkBlue;
-            label6.Location = new Point(95, 9);
+            label6.Location = new Point(80, 9);
             label6.Name = "label6";
-            label6.Size = new Size(320, 41);
+            label6.Size = new Size(345, 41);
             label6.TabIndex = 15;
-            label6.Text = "Client Management";
+            label6.Text = "Application Settings";
             // 
             // lblBack
             // 
